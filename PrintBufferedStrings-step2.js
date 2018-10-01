@@ -6,8 +6,9 @@ function getAndPrintHTML () {
 
     var requestOptions = {
         host: 'sytantris.github.io',
-        path: '/http-examples/step1.html'
+        path: '/http-examples/step2.html'
     };
+    let dataBuffed = "";
 
     console.log("Getting the chunks...");
 
@@ -15,17 +16,19 @@ function getAndPrintHTML () {
     response.setEncoding('utf8');
 
     response.on('data', function(data) {
-// ask a mentor if this is the correct buffer step        
-        let dataBuffed = data;
-        console.log(dataBuffed + '\n');
+// this is the buffer step        
+        dataBuffed += data;
     });
 
 
 
 // this code ends the stream.
     response.on('end', function() {
+        console.log(dataBuffed + '\n');
         console.log('Response stream complete.');
+
     });
+
 });
 
 }
