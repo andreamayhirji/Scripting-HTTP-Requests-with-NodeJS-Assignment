@@ -1,18 +1,13 @@
 var https = require('https');
 
 // ask a mentor later why it worked using function getAndPrintHTML(options)
-function getAndPrintHTML() {
-
-    var options = {
-        host: (process.argv[2]),
-        path: (process.argv[3])
-    }
+function getAndPrintHTML(options) {
 
     let buffedData = "";
 
 
-    https.get(options, function (response) {
-        response.setEncoding('utf8');
+    https.get(requestOptions, function (response) {
+        response.setEncoding('UTF8');
         response.on('data', function (data) {
             buffedData += data;
         });
@@ -28,10 +23,9 @@ function getAndPrintHTML() {
 };
 
 
+var requestOptions = {
+    host: 'sytantris.github.io',
+    path: '/http-examples/step3.html'
+};
 
-// var requestOptions = {
-//     host: 'sytantris.github.io',
-//     path: '/http-examples/step3.html'
-// };
-
-getAndPrintHTML();
+getAndPrintHTML(requestOptions);
